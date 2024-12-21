@@ -66,3 +66,5 @@ project/metals.sbt
 
 #consider adding .env to preserve privacy if necessary
 #.env
+media/main.js
+media/main.js.map
