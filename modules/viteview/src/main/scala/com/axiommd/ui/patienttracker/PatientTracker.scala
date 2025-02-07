@@ -6,13 +6,13 @@ import com.axiommd.shapeless.{ShapelessFieldNameExtractor,Tuples}
 import java.time.*
 import com.axiommd.ui.tableutils.{CCRowList,ColRow,GridDataT,GridT}
 import com.axiommd.ui.patienttracker.TypeClass.*
-import com.raquo.laminar.api.L.{*, given}
+import com.raquo.laminar.api.L.{* /*given*/}
 import org.scalajs.dom
-import com.axiommd.ModelFetch
+// import com.axiommd.ModelFetch
 import com.raquo.laminar.api.L
 import com.raquo.airstream.ownership.OneTimeOwner
 import org.scalajs.dom.KeyboardEvent
-import io.bullet.borer.derivation.key
+// import io.bullet.borer.derivation.key
 import scala.scalajs.js
 
 type PatientList = CCRowList[Patient]
@@ -81,7 +81,7 @@ class PatientTracker() extends GridT [Patient,CellData] with RenderHtml:
 
   def renderHtml: L.Element = 
     def headerRow(s:List[String]) = 
-      List(tr(
+      List(tr(position:="sticky",top:="0px",backgroundColor:="black",color:="white",
           s.map (s => th(s))
         )
       )
@@ -109,7 +109,7 @@ class PatientTracker() extends GridT [Patient,CellData] with RenderHtml:
           case Some(row) if row == cols.head._2.row => "blue"
           case _ => "black"
       },
-      pgd.map{c => this.tableCell(c.colrow)}
+      pgd.map{c => this.tableCell(c.colrow)} 
     )
 
   def tableCell(colRow:ColRow) : HtmlElement  =
@@ -117,6 +117,7 @@ class PatientTracker() extends GridT [Patient,CellData] with RenderHtml:
     val patientGridData = data(colRow).map{Tuples.from[PatientGridData](_)} 
 
     td(
+      cls:= "cell-selected", 
       tabIndex := colRow.row*9000 + colRow.col, //apparently I need this to capture keyboard events
       color := patientGridData.map(_.data.color).getOrElse("black"), //TODO convert tuple to case class to improve readability
       onKeyDown --> keyboardHandler,
