@@ -11,7 +11,6 @@ object ModelFetch :
   val abortController = new AbortController()
 
   def fetchPatients = 
-    import java.time._ //cross scalajs and jvm compatible
     import com.axiom.model.shared.dto.Patient 
     
     Fetch.get("http://localhost:8080/patientsjson").future.text(abortController)
