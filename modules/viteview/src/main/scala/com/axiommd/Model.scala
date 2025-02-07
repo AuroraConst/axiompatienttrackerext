@@ -1,8 +1,7 @@
 package com.axiommd
-import com.raquo.laminar.api.L.{*, given}
-import org.scalajs.dom
+import com.raquo.laminar.api.L.{* /*, given*/}
 import com.axiom.model.shared.dto.Patient
-import com.axiommd.shapeless.{TableColProperties,Display}
+import com.axiommd.shapeless.{Display}
 object Model :
   type PatientFields = List[Display]
 

@@ -1,7 +1,6 @@
 package com.axiommd.ui.tableutils
 
-import com.raquo.laminar.api.L.{*, given}
-import collection.mutable.ListBuffer
+import com.raquo.laminar.api.L.{* /*, given*/}
 import scala.collection.mutable
 
 

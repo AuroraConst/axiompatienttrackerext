@@ -9,7 +9,7 @@ object TypeClass :
 
   object CellDataConvertor:
     given CellDataConvertor[Int] =         i => List(CellData(i.toString,"black"))
-    given CellDataConvertor[Boolean] =     b => List(CellData(b.toString,"blue"))
+    given CellDataConvertor[Boolean] =     b => List(CellData(b.toString,"green"))
     given CellDataConvertor[String] =      s =>  List(CellData(identity(s),"#3361ff"))
     given CellDataConvertor[LocalDate] =   d => List(CellData(d.toString(),"yellow"))
     given CellDataConvertor[LocalDateTime] = d => List(CellData(d.toString(),"cyan"))
