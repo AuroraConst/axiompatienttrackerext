@@ -63,6 +63,11 @@ h1 {
 .read-the-docs {
   color: #888;
 }
+.cell-selected {
+  outline: 3px transparent; 
+  /* border: 3px transparent; */
+
+}
 
 button {
   border-radius: 8px;
