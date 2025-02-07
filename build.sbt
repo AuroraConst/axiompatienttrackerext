@@ -1,7 +1,7 @@
 import sbt._
 import sbt.Keys._
 import org.scalajs.linker.interface.ModuleSplitStyle
-
+import scala.sys.process._ // Add this import
 
 
 lazy val copyFileJSArtifactsToMedia = taskKey[Unit]("Copies a file from source to destination")
@@ -69,7 +69,8 @@ val commonSettings = Seq(
       ModuleSplitStyle.SmallModulesFor(List("viteview")))
   },
   scalacOptions ++=  Seq("-Yretain-trees",//necessary in zio-json if any case classes have default parameters
-    "-Xmax-inlines","60"), //setting max inlines to accomodate > 32 fields in case classes
+    "-Xmax-inlines","60",
+    "-Wunused:imports"), //setting max inlines to accomodate > 32 fields in case classes
 
   libraryDependencies  ++= Dependencies.upickle.value,
   libraryDependencies ++= Dependencies.borerJson.value,
